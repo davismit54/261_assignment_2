@@ -194,7 +194,7 @@ class DynamicArray:
         #input validation
 
 
-        if start_index < 0 or start_index + size > self._size:
+        if start_index < 0 or start_index + size > self._size or size < 0:
             raise DynamicArrayException()
         if size == 0:
             return DynamicArray()
