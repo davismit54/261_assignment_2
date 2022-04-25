@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Mitchell Davis
+# OSU Email: davismit@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 2
+# Due Date: 4/25/22
+# Description: Creates methods to implement a Bag data structure and various manipulation methods
 
 
 from dynamic_array import *

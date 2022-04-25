@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Mitchell
+# OSU Email: davismit@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 2
+# Due Date: 4/25/22
+# Description: Creates methods for a dynamic array object for various manipulations
 
 
 from static_array import StaticArray
