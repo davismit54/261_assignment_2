@@ -159,13 +159,33 @@ class DynamicArray:
                 self.append(old_data[i])
 
 
-
-
     def remove_at_index(self, index: int) -> None:
         """
         TODO: Write this implementation
         """
-        pass
+        #Initial checks
+        if index > self._size or index < 0:
+            raise DynamicArrayException
+
+        #check if resize is needed, then resize
+        if self._capacity > 10 and self._size < self._capacity / 4:
+            new_size = self._size * 2
+            if new_size < 10:
+                new_size = 10
+            self.resize(new_size)
+
+        #remove at index
+
+        old_data = self._data
+        old_size = self._size
+        self._data = StaticArray(self._capacity)
+        self._size = 0
+
+        #Copy every value of the old array unless at the removal index
+        for i in range(old_size):
+            if i != index:
+                self.append(old_data[i])
+
 
     def slice(self, start_index: int, size: int) -> "DynamicArray":
         """
