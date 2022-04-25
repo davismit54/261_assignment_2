@@ -142,7 +142,7 @@ class DynamicArray:
         TODO: Write this implementation
         """
         if index > self._size or index < 0:
-            raise DynamicArrayException
+            raise DynamicArrayException()
         if self._size == self._capacity:
             self.resize(self._capacity * 2)
         if index == self._size:
@@ -164,8 +164,8 @@ class DynamicArray:
         TODO: Write this implementation
         """
         #Initial checks
-        if index > self._size or index < 0:
-            raise DynamicArrayException
+        if index > self._size or index < 0 or self._size == 0:
+            raise DynamicArrayException()
 
         #check if resize is needed, then resize
         if self._capacity > 10 and self._size < self._capacity / 4:
@@ -355,6 +355,13 @@ if __name__ == "__main__":
     for _ in range(5):
         da.remove_at_index(0)
         print(da)
+
+    print("\n# MD TEST - remove at index")
+    da = DynamicArray()
+    try:
+        da.remove_at_index(0)
+    except Exception as e:
+        print("Exception raised: ", type(e))
 
     print("\n# slice example 1")
     da = DynamicArray([1, 2, 3, 4, 5, 6, 7, 8, 9])
