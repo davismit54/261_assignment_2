@@ -194,7 +194,7 @@ class DynamicArray:
         #input validation
 
         if size == 0:
-            return DynamicArray()
+            raise DynamicArrayException()
         if start_index < 0 or start_index + size > self._size or size < 1:
             raise DynamicArrayException()
 
@@ -213,8 +213,6 @@ class DynamicArray:
         """
         for i in range(second_da._size):
             self.append(second_da[i])
-
-
 
     def map(self, map_func) -> "DynamicArray":
         """
@@ -560,3 +558,12 @@ if __name__ == "__main__":
         da.append(case[x])
         mode, frequency = find_mode(da)
         print(f"{da}\nMode: {mode}, Frequency: {frequency}")
+
+    print("gradescope failed test")
+    da = DynamicArray()
+    da.append(54789)
+    print(da)
+    try:
+        print(da.slice(1,0))
+    except:
+        print("Exception raised")
