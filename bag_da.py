@@ -46,44 +46,76 @@ class Bag:
         """
         TODO: Write this implementation
         """
-        pass
+        self._da.append(value)
 
     def remove(self, value: object) -> bool:
         """
         TODO: Write this implementation
         """
-        pass
+        for i in range(self._da.length()):
+            if self._da[i] == value:
+                self._da.remove_at_index(i)
+                return True
+
+        return False
 
     def count(self, value: object) -> int:
         """
         TODO: Write this implementation
         """
-        pass
+        count = 0
+        for i in range(self._da.length()):
+            if self._da[i] == value:
+                count += 1
+
+        return count
 
     def clear(self) -> None:
         """
         TODO: Write this implementation
         """
-        pass
+        for i in range(self._da.length()):
+            self._da.remove_at_index(0)
 
     def equal(self, second_bag: "Bag") -> bool:
         """
         TODO: Write this implementation
         """
-        pass
+        if self._da.length() != second_bag._da.length():
+            return False
+        self_val_list = Bag()
+        for i in range(self._da.length()):
+            if self_val_list.count(self._da[i]) == 0:
+                self_val_list.add(self._da[i])
+        for i in range(self_val_list._da.length()):
+            if self.count(self_val_list._da[i]) != second_bag.count(self_val_list._da[i]):
+                return False
+
+        return True
+
+
+
+
 
     def __iter__(self):
         """
         TODO: Write this implementation
         """
-        pass
+        self._index = 0
+
+        return self
 
     def __next__(self):
         """
         TODO: Write this implementation
         """
-        pass
+        try:
+            value = self._da[self._index]
+        except DynamicArrayException:
+            raise StopIteration
 
+        self._index = self._index + 1
+        return value
 
 # ------------------- BASIC TESTING -----------------------------------------
 
