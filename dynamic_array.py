@@ -191,38 +191,108 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
-        return DynamicArray()
+        #input validation
+        if start_index < 0 or start_index + size > self._size or size < 1:
+            raise DynamicArrayException("Invalid index or size.")
+
+        #iterate "size" number of times and
+        new_da = DynamicArray()
+        index = start_index
+        for i in range(size):
+            new_da.append(self.get_at_index(index))
+            index += 1
+
+        return new_da
 
     def merge(self, second_da: "DynamicArray") -> None:
         """
         TODO: Write this implementation
         """
-        pass
+        for i in range(second_da._size):
+            self.append(second_da[i])
+
+
 
     def map(self, map_func) -> "DynamicArray":
         """
         TODO: Write this implementation
         """
-        pass
+        new_da = DynamicArray()
+        for i in range(self._size):
+            new_da.append(map_func(self[i]))
+        return new_da
 
     def filter(self, filter_func) -> "DynamicArray":
         """
         TODO: Write this implementation
         """
-        pass
+        new_da = DynamicArray()
+        for i in range(self._size):
+            if filter_func(self[i]):
+                new_da.append(self[i])
+        return new_da
 
     def reduce(self, reduce_func, initializer=None) -> object:
         """
         TODO: Write this implementation
         """
-        pass
+        new_da = DynamicArray()
 
+
+        i = 0
+        if initializer is not None:
+            cumulative_value = initializer
+            #Corner case handling, if no values, just return initializer if present
+            if self._size == 0:
+                return cumulative_value
+        else:
+            #corner case handling, if no values or initializer, return None
+            if self._size == 0:
+                return None
+            cumulative_value = self[i]
+            i += 1
+
+
+        while i < self._size:
+            cumulative_value = (reduce_func(cumulative_value, self[i]))
+            #print(f"debug {cumulative_value}")
+            i += 1
+
+        return cumulative_value
 
 def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     """
     TODO: Write this implementation
     """
-    pass
+    mode_da = DynamicArray()
+
+    current_val = arr[0]
+    current_count = 0
+    max_count = 0
+    current_leader = False
+
+    for i in range(arr.length()):
+        if arr[i] == current_val:
+            current_count += 1
+            #If current counter matched the max - first time
+
+        else:
+            current_val = arr[i]
+            current_count = 1
+            current_leader = False
+
+        if current_count == max_count and current_leader is False:
+            current_leader = True
+            mode_da.append(current_val)
+        if current_count > max_count:
+            current_leader = True
+            mode_da = DynamicArray()
+            mode_da.append(current_val)
+            max_count = current_count
+    return(mode_da, max_count)
+
+
+
 
 
 # ------------------- BASIC TESTING -----------------------------------------
