@@ -196,7 +196,7 @@ class DynamicArray:
         if size == 0:
             return DynamicArray()
         if start_index < 0 or start_index + size > self._size or size < 1:
-            raise DynamicArrayException("Invalid index or size.")
+            raise DynamicArrayException()
 
         #iterate "size" number of times and
         new_da = DynamicArray()
