@@ -164,7 +164,7 @@ class DynamicArray:
         TODO: Write this implementation
         """
         #Initial checks
-        if index > self._size or index < 0 or self._size == 0:
+        if index >= self._size or index < 0 or self._size == 0:
             raise DynamicArrayException()
 
         #check if resize is needed, then resize
