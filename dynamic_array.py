@@ -112,7 +112,7 @@ class DynamicArray:
 
     def resize(self, new_capacity: int) -> None:
         """
-        TODO: document
+        Resizes a DynamicArray capacity to new_capacity
         """
         #print(new_capacity >= self._size)
         if new_capacity > 0 and new_capacity >= self._size:
@@ -130,7 +130,8 @@ class DynamicArray:
 
     def append(self, value: object) -> None:
         """
-        TODO: Test and document
+        appends an input value on the end of the DynamicArray _data Static Array, increasing size
+        Doubles Capacity if overflowed
         """
         if self._size >= self._capacity:
             self.resize(self._capacity * 2)
@@ -139,7 +140,8 @@ class DynamicArray:
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
-        TODO: Write this implementation
+        inserts an input value into the input index, and shifts all subsequent values 1
+        doubles capacity if overflowed
         """
         if index > self._size or index < 0:
             raise DynamicArrayException()
@@ -161,7 +163,8 @@ class DynamicArray:
 
     def remove_at_index(self, index: int) -> None:
         """
-        TODO: Write this implementation
+        Removes the value at the specified index and shift all subsequent values to fill
+        Halves capacity of DA if less than a quarter is occupied
         """
         #Initial checks
         if index >= self._size or index < 0 or self._size == 0:
@@ -189,7 +192,7 @@ class DynamicArray:
 
     def slice(self, start_index: int, size: int) -> "DynamicArray":
         """
-        TODO: Write this implementation
+        returns a DynamicArray that is a subset of the DA starting at input index with the specified size
         """
         #input validation
 
@@ -210,14 +213,15 @@ class DynamicArray:
 
     def merge(self, second_da: "DynamicArray") -> None:
         """
-        TODO: Write this implementation
+        appends all values of the second_da in order to the end of the self DA
         """
         for i in range(second_da._size):
             self.append(second_da[i])
 
     def map(self, map_func) -> "DynamicArray":
         """
-        TODO: Write this implementation
+        accepts a function as a parameter and performs that function on all values of the DA
+        returns a different DA of the results of each
         """
         new_da = DynamicArray()
         for i in range(self._size):
@@ -226,7 +230,7 @@ class DynamicArray:
 
     def filter(self, filter_func) -> "DynamicArray":
         """
-        TODO: Write this implementation
+        Accepts a function and returns a DA of all values that return True when the function is applied
         """
         new_da = DynamicArray()
         for i in range(self._size):
@@ -236,7 +240,8 @@ class DynamicArray:
 
     def reduce(self, reduce_func, initializer=None) -> object:
         """
-        TODO: Write this implementation
+        Sequentially applies a function to each value of the DA, with a cumulative result
+        accepts an initializer to be the starting value
         """
         new_da = DynamicArray()
 

@@ -44,13 +44,13 @@ class Bag:
 
     def add(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Accepts an object and adds it to the Bag
         """
         self._da.append(value)
 
     def remove(self, value: object) -> bool:
         """
-        TODO: Write this implementation
+        Accepts an object and removes ONE instance of that object from the Bag
         """
         for i in range(self._da.length()):
             if self._da[i] == value:
@@ -61,7 +61,7 @@ class Bag:
 
     def count(self, value: object) -> int:
         """
-        TODO: Write this implementation
+        Accepts an object and returns the number of times that object is in the Bag
         """
         count = 0
         for i in range(self._da.length()):
@@ -72,14 +72,14 @@ class Bag:
 
     def clear(self) -> None:
         """
-        TODO: Write this implementation
+        Removes all objects from the Bag
         """
         for i in range(self._da.length()):
             self._da.remove_at_index(0)
 
     def equal(self, second_bag: "Bag") -> bool:
         """
-        TODO: Write this implementation
+        Determines if two bags contain all the same objects and quantities. Does not consider order
         """
         if self._da.length() != second_bag._da.length():
             return False
@@ -99,7 +99,7 @@ class Bag:
 
     def __iter__(self):
         """
-        TODO: Write this implementation
+        Begins an iteration by starting an index variable
         """
         self._index = 0
 
@@ -107,7 +107,7 @@ class Bag:
 
     def __next__(self):
         """
-        TODO: Write this implementation
+        Returns the next value in the Bag, unless there are no more. Increments index to next Value
         """
         try:
             value = self._da[self._index]
